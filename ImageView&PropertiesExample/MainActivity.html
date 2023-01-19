@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.imageviewpropertiesexample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val simpleImageView =findViewById<ImageView>(R.id.simpleImageView)
+        val scaleTypeCenterCrop = findViewById<Button>(R.id.scaleTypeCenterCrop)
+        scaleTypeCenterCrop.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.CENTER_CROP)
+        })
+        val scaleTypeCenterInside = findViewById<Button>(R.id.scaleTypeCenterInside)
+        scaleTypeCenterInside.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE)
+        })
+        val scaleTypeFitCenter = findViewById<Button>(R.id.scaleTypeFitCenter)
+        scaleTypeFitCenter.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.FIT_CENTER)
+        })
+        val scaleTypeFitEnd = findViewById<Button>(R.id.scaleTypeFitEnd)
+        scaleTypeFitEnd.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.FIT_END)
+        })
+        val scaleTypeFitStart = findViewById<Button>(R.id.scaleTypeFitStart)
+        scaleTypeFitStart.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.FIT_START)
+        })
+        val scaleTypeFitXY = findViewById<Button>(R.id.scaleTypeFitXY)
+        scaleTypeFitXY.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.FIT_XY)
+        })
+        val scaleTypeMatrix = findViewById<Button>(R.id.scaleTypeMatrix)
+        scaleTypeMatrix.setOnClickListener(View.OnClickListener {
+            simpleImageView.setScaleType(ImageView.ScaleType.MATRIX)
+        })
+
+
+    }
+}
+
+
+
+
+
+
+
+</xmp></h1>
+</body>
+</html>

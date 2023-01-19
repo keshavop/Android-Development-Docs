@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.imageswitcherexample1
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.animation.AnimationUtils
+import android.widget.Button
+
+import android.widget.ImageSwitcher
+import android.widget.ImageView
+/*Get the reference of ImageSwitcher in class using findViewById() method, or you can also create an object dynamically.
+Set a factory using switcherid.setFactory()
+Set an in-animation using switcherid.InAnimation()
+Set an out-animation using switcherid.OutAnimation()
+*/
+class MainActivity : AppCompatActivity() {
+
+    var nameList = intArrayOf(R.drawable.chinchilla,
+        R.drawable.cod,
+        R.drawable.crane,
+        R.drawable.crocodile,
+        R.drawable.deer,
+        R.drawable.dog,
+        R.drawable.dolphin,
+        R.drawable.dove,
+        R.drawable.eel,
+        R.drawable.elephant,
+        R.drawable.emu,
+        R.drawable.fly
+    )
+    var index = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val isw = findViewById<ImageSwitcher>(R.id.imageSwitcher)
+        val btn =findViewById<Button>(R.id.btnNext)
+        /*setFactory(ViewFactory factory): This method is used to create a new view for ImageSwitcher.
+         By using this method we create a new ImageView and replace the old view with that.*/
+        isw.setFactory {
+            // Create a new ImageView and set it's properties
+            val imgView = ImageView(applicationContext)
+            imgView.scaleType = ImageView.ScaleType.FIT_CENTER
+            imgView.setPadding(8, 8, 8, 8)
+            //return imageView
+            imgView
+        }
+
+        /*setImageResource(int resid):
+        This method is also used to set an image in image switcher.
+         The image is passed in the form of integer id.*/
+        isw.setImageResource(nameList[index])
+
+        /*loadAnimation(Context context, int id):
+        This method is used whenever we need to define an object of Animation class through
+        AnimationUtils class by calling a static method loadAnimation.*/
+
+        val imgIn = AnimationUtils.loadAnimation(
+            this, android.R.anim.slide_in_left)
+        /*setInAnimation(Animation inAnimation):
+         This method is used to set the animation of the appearance of the object on the screen.*/
+        isw.inAnimation = imgIn
+
+        /*setOutAnimation(Animation outAnimation): This method does the opposite of setInAnimation().
+        Whenever we use set a new Image in ImageView,
+        it first removes the old view using an animation set with the setOutAnimation() method,
+        and then places the new one using the animation set by the setInAnimation() method.*/
+
+        val imgOut = AnimationUtils.loadAnimation(
+            this, android.R.anim.slide_out_right)
+        isw.outAnimation = imgOut
+        //Display the images
+        btn.setOnClickListener {
+            index = if (index + 1 < nameList.size) index +1 else 0
+            isw.setImageResource(nameList[index])
+        }
+    }
+}
+
+/*Id: id attribute is used to uniquely identify a ImageSwitcher.
+padding: This attribute is used to set the padding from left, right, top or bottom side of a ImageSwitcher.
+
+paddingRight: This attribute is used to set the padding from the right side of a ImageSwitcher.
+paddingLeft: This attribute is used to set the padding from the left side of a ImageSwitcher.
+paddingTop: This attribute is used to set the padding from the top side of a ImageSwitcher.
+paddingBottom: This attribute is used to set the padding from the bottom side of a ImageSwitcher.
+Padding: This attribute is used to set the padding from the all the side’s of a ImageSwitcher.*/
+
+
+</xmp></h1>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+package com.example.radiobuttonexample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        var radiogrp = findViewById<RadioGroup>(R.id.radioGroup)
+        var btn = findViewById<Button>(R.id.btnDisplay)
+        btn.setOnClickListener {
+            val intSelectButton: Int = radiogrp.checkedRadioButtonId
+            var radiobtn = findViewById<RadioButton>(intSelectButton)
+            Toast.makeText(baseContext, radiobtn.text, Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+
+
+</xmp></h1>
+</body>
+</html>

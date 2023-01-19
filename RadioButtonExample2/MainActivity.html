@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+package com.example.radiobuttonexample1
+
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    fun onClickedBMW(view: View?) {
+        Toast.makeText(this, "BMW is selected for a drive!", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onClickedNissan(view: View?) {
+        Toast.makeText(this, "Nissan GTR is selected for a drive!", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onClickedLamborghini(view: View?) {
+        Toast.makeText(this, "Lamborghini is selected for a drive!", Toast.LENGTH_SHORT).show()
+    }
+}
+
+
+</xmp></h1>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+/*Android Snackbar is a material design component introduced with API 22.2.0.
+ The functionality would resemble Android Toast, but unlike Toast,
+ Snackbar could be dismissed by user or an action listener could be setup to respond to user actions.*/
+/*Snackbar when shown,
+is displayed at the bottom of the screen, with default background color “#323232” and text color “#FFFFFF“.
+
+*/
+package com.example.snackbarexample1
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+
+/*To use Snackbar in your android application,
+you need to include the ‘com.google.android.material’ package in your build.gradle (app) dependencies.*/
+import com.google.android.material.snackbar.Snackbar
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val btn = findViewById<Button> (R.id.btn) as Button
+        btn.setOnClickListener {
+            /* It is the root layout of the activity
+            This is the message to be appear on snackbar, and we can customise it with our own message
+            This is last parameter which is the time limit how long snackbar to be displayed
+            */
+            val snack = Snackbar.make(it, "Welcome to Lovely Professional University", Snackbar.LENGTH_LONG)
+
+            /*
+            show() method is used to display the Snackbar on the screen.
+            */
+            snack.show()
+        }
+
+    }
+}
+
+
+</xmp></h1>
+</body>
+</html>

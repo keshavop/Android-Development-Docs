@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+/*
+Android Implicit Intent invokes the component of another app to handle the
+ request. It does not specify the component name specifically.
+
+For example, if we want to share data using Intent,
+ it invokes the relevant component to fulfill the request.
+
+Implicit intents do not name a specific component,
+ but instead declare a general action to perform,
+ which allows a component from another app to handle it.
+ For example, if you want to show the user a location on a map,
+  you can use an implicit intent to request that another capable app
+  show a specified location on a map.
+When you use an implicit intent, the Android system finds the appropriate
+ component to start by comparing the contents of the intent to the intent
+  filters declared in the manifest file of other apps on the device.
+  If the intent matches an intent filter, the system starts that component
+  and delivers it the Intent object. If multiple intent filters are compatible,
+ the system displays a dialog so the user can pick which app to use.
+*/
+
+package com.example.implicitintentexample
+
+import android.content.Intent
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.CallLog
+import android.provider.ContactsContract
+import android.provider.MediaStore
+import android.widget.Button
+import android.widget.EditText
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val et1=findViewById<EditText>(R.id.urlText)
+        val btn1=findViewById<Button>(R.id.btnNavigate)
+        val btn2=findViewById<Button>(R.id.btnCamera)
+        val btn3=findViewById<Button>(R.id.btncall)
+        val btn4=findViewById<Button>(R.id.btncontacts)
+        val btn5=findViewById<Button>(R.id.btngallery)
+        val btn6=findViewById<Button>(R.id.btndialler)
+
+        btn1.setOnClickListener {
+            var url:String=et1.text.toString()
+            val url_int2= Intent(Intent.ACTION_VIEW, Uri.parse("https://$url"))
+            startActivity(url_int2)
+        }
+        btn2.setOnClickListener {
+            val camera_intent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(camera_intent)
+        }
+        btn3.setOnClickListener {
+            val calllog_int: Intent =Intent(Intent.ACTION_VIEW)
+            calllog_int.setType(CallLog.Calls.CONTENT_TYPE)
+            startActivity(calllog_int)
+        }
+        btn4.setOnClickListener {
+            val cont_int=Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+            startActivity(cont_int)
+        }
+        btn5.setOnClickListener {
+            val img_int=Intent()
+            img_int.action=Intent.ACTION_VIEW
+            img_int.type="image/*"
+            startActivity(img_int)
+        }
+        btn6.setOnClickListener {
+            val dial_int=Intent(Intent.ACTION_DIAL)
+            dial_int.setData(Uri.parse("tel:+911234567890"))
+            startActivity(dial_int)
+        }
+
+    }
+}
+
+
+
+</xmp></h1>
+</body>
+</html>

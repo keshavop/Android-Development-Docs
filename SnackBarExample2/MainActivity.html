@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+package com.example.snackbarexample2
+/* Android Snackbar is light-weight widget and
+they are used to show messages in the bottom of the application with swiping enabled.*/
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import com.google.android.material.snackbar.Snackbar
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val btn1 = findViewById(R.id.button1)as Button
+        val btn2 = findViewById<Button>(R.id.button2)
+
+        btn1.setOnClickListener(){
+            val snack = Snackbar.make(it,"ACTION CALL SNACKBAR",Snackbar.LENGTH_LONG)
+            snack.setAction("DISMISS", View.OnClickListener {
+                // executed when DISMISS is clicked
+                println("Snackbar Set Action - OnClick.")
+            })
+            snack.show()
+        }
+
+        btn2.setOnClickListener(View.OnClickListener {
+            val snack = Snackbar.make(it,"ACTION CALL SNACKBAR---Undo",Snackbar.LENGTH_LONG)
+            snack.setAction("Undo",View.OnClickListener {
+                val snack1 = Snackbar.make(it,"Message Undo",Snackbar.LENGTH_LONG)
+                snack1.show()
+            })
+            snack.show()
+        })
+
+
+    }
+}
+
+/*Difference between Toast and Snackbar
+A Toast messages can be customised and printed anywhere on the screen,
+ but a Snackbar can be only showed in the bottom of the screen
+A Toast message don’t have action button, but Snackbar may have action button optionally. T
+hough, A Snackbar shouldn’t have more than one action button
+Toast message cannot be off until the time limit finish,
+but Snackbar can be swiped off before the time limit
+*/
+
+
+</xmp></h1>
+</body>
+</html>

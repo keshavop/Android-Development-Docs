@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.alertdialogexample
+
+import android.app.AlertDialog
+import android.content.DialogInterface
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+import android.view.View
+import android.widget.EditText
+
+
+import android.widget.Toast
+import java.util.*
+import kotlin.collections.ArrayList
+
+
+/*Alert Dialog is a window that pops up on the screen.
+They generally show some information and ask for a user action.
+There are three core components that build an Alert Dialog.
+
+Title Text
+Message Text
+Buttons - There are three types of buttons: Positive, Negative, and Neutral*/
+
+
+class MainActivity : AppCompatActivity() {
+
+    /*dialog	DialogInterface: the dialog that received the click
+which	int: the button that was clicked (ex. DialogInterface#BUTTON_POSITIVE) or
+ the position of the item clicked*/
+
+    val positiveButtonClick = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            "yes", Toast.LENGTH_SHORT).show()
+    }
+    val negativeButtonClick = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            "no", Toast.LENGTH_SHORT).show()
+    }
+    val neutralButtonClick = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,"Maybe", Toast.LENGTH_SHORT).show()
+    }
+    /*Inside the setPositiveButton function, we pass the Button text
+    along with a Kotlin function that’s triggered when that button is clicked.
+    The function is a part of the DialogInterface.OnClickListener() interface.
+    The function type is (DialogInterface, Int) -> Unit.
+    DialogInterface is an instance of the Dialog and Int is the id of the button that is clicked. */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    fun basicAlert(view: View) {
+
+        val builder = AlertDialog.Builder(this)//pass the context inside the constructor.
+
+        with(builder)
+        {
+            setTitle("Lovely Professional University")
+            setMessage("We have a message")
+            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton("no", negativeButtonClick)
+            setNeutralButton("Maybe", neutralButtonClick)
+            show()    //The builder.show() displays the Alert Dialog on the screen.
+        }
+    }
+    fun withItems(view: View) {
+
+        val items = arrayOf("Red", "Orange", "Yellow", "Blue")
+        val builder = AlertDialog.Builder(this)
+        with(builder)
+        {
+            setTitle("List of Items")
+            setItems(items) { dialog, which ->
+                Toast.makeText(applicationContext, items[which] + " is clicked", Toast.LENGTH_SHORT).show()
+            }
+
+            setPositiveButton("OK", positiveButtonClick)
+            show()
+        }
+    }
+    fun withMultiChoiceList(view: View) {
+
+        val items = arrayOf("Microsoft", "Apple", "Amazon", "Google")
+        val selectedList = ArrayList<Int>()
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("This is list choice dialog box")
+        builder.setMultiChoiceItems(items, null
+        ) { dialog, which, isChecked ->
+            if (isChecked) {
+                selectedList.add(which)
+            } else if (selectedList.contains(which)) {
+                selectedList.remove(Integer.valueOf(which))
+            }
+        }
+
+        builder.setPositiveButton("DONE") { dialogInterface, i ->
+            val selectedStrings = ArrayList<String>()
+
+            for (j in selectedList.indices) {
+                selectedStrings.add(items[selectedList[j]])
+            }
+
+            Toast.makeText(applicationContext, "Items selected are: " + Arrays.toString(selectedStrings.toTypedArray()), Toast.LENGTH_SHORT).show()
+        }
+
+        builder.show()
+
+    }
+    fun withtwoButton(view: View) {
+
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle("Title")
+        alertDialog.setMessage("Message")
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes"
+        ) { dialog, which -> dialog.dismiss() }
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No"
+        ) { dialog, which -> dialog.dismiss() }
+        alertDialog.show()
+  }
+    fun withEditText(view: View) {
+        val builder = AlertDialog.Builder(this)
+        /*The LayoutInflater class is used to instantiate the contents of layout
+        XML files into their corresponding View objects.
+        In other words, it takes an XML file as input and builds the View objects from it.*/
+        val inflater = layoutInflater
+        builder.setTitle("With EditText")
+        val dialogLayout = inflater.inflate(R.layout.alert_dialog_with_edittext, null)
+        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("OK") { dialogInterface, i -> Toast.makeText(applicationContext, "EditText is " + editText.text.toString(), Toast.LENGTH_SHORT).show() }
+        builder.show()
+    }
+
+}
+
+
+
+
+
+
+
+</xmp></h1>
+</body>
+</html>

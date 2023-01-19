@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/radioGroup"
+        android:layout_marginBottom="20sp"
+        android:layout_centerInParent="true"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:text="Select your favourite to drive..."/>
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMW"
+            android:onClick="onClickedBMW"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NISSAN GTR"
+            android:onClick="onClickedNissan"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lamborghini"
+            android:onClick="onClickedLamborghini"/>
+    </RadioGroup>
+
+
+</RelativeLayout>
+
+
+
+
+</xmp></h1>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+
+/*how to Dynamically create a TextView in Kotlin
+pt
+> Points - 1/72 of an inch based on the physical size of the screen.
+
+dp or dip
+> Density-independent Pixels - an abstract unit that is based on the physical density of the screen. These units are relative to a 160 dpi screen, so one dp is one pixel on a 160 dpi screen. The ratio of dp-to-pixel will change with the screen density, but not necessarily in direct proportion. Note: The compiler accepts both "dip" and "dp", though "dp" is more consistent with "sp".
+
+sp
+> Scaleable Pixels OR scale-independent pixels - this is like the dp unit, but it is also scaled by the user's font size preference. It is recommended you use this unit when specifying font sizes, so they will be adjusted for both the screen density and the user's preference. */
+
+
+package com.example.dynamictextview_example
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+/*TypedValue holds raw representations of typed data (ex. floats, dimensions, etc.)
+loaded from compiled Android XML resources.
+The class is primarily used as an intermediary between the resources framework and
+the places where application developers need to use values stored in resources.*/
+import android.util.TypedValue
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.graphics.Color
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val layout = findViewById<LinearLayout>(R.id.main_layout)
+        val textView = TextView(this)
+        textView.layoutParams= LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT)
+        textView.setText("Lovely Professional University")
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP ,20f)//Converts a complex data value holding a dimension to its final value as an integer pixel size
+        textView.setTextColor(Color.MAGENTA)
+        layout ?.addView(textView)
+        textView.setOnClickListener()
+        {
+            println("Hello CSE224")
+        }
+
+
+    }
+
+
+}
+
+
+
+</xmp></h1>
+</body>
+</html>

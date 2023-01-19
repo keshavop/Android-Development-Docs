@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+/*
+Localization in Android
+The applications that we use in Android devices can be specific
+to a particular language. That is where Localization comes in the role.
+
+Localization is a process that changes the string into various different
+languages based on user requirements.
+
+Android loads text and media resources from the project’s ‘res’ directory.
+Additionally, Android can select and load resources from different directories, based on the current device configuration and locale.
+
+For example, if the code loads a string called ‘R.string.title’,
+Android will choose the correct value for that string at runtime by loading the appropriate strings.xml file from a matching ‘res/values’ directory.
+
+In order to have a multilingual Android app you need to provide Android with
+the localized resource files.
+
+Language Localization is a process to change the application context into
+multiple languages based on the requirements.
+
+Android is an overall operating system that runs on millions of devices worldwide
+and among various groups. Since the diversity range is enormous, a feature that facilitates local languages adds an advantage to any Android application. Implementation of such a feature requires the need to handle text, audio files, numbers, currency,
+and graphics appropriately for the locals where our application is used.
+
+Language	Code	Folder Name
+Arabic	    ar	values-ar
+Bengali	    bn	values-bn
+Bulgarian	bg	values-bg
+Chinese	    zh	values-zh
+French	    fr	values-fr
+German	    de	values-de
+Japanese	ja	values-ja
+Tibetan 	bo	values-bo
+Hindi	    hi	values-hi
+Telugu	    te	values-te
+Punjabi	    pa	values-pa
+*/
+
+
+package com.example.localizationappexample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+
+
+
+
+</xmp></h1>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.fragmentexample1
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+
+class Fragment1: Fragment(){
+
+/*The LayoutInflater takes XML file as an input and builds View objects from it.*/
+    /*The general idea is this: If attachToRoot is set to true,
+     then the layout file specified in the first parameter is inflated and
+     attached to the ViewGroup specified in the second parameter.
+
+When attachToRoot is false,
+ the layout file from the first parameter is inflated and returned as a View.
+ Means root is only used to create the correct subclass of LayoutParams
+ for the root view(of first parameter)
+ in the XML.*/
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_fragment1,container,false)
+        /* By passing in false, we say that we do not want to attach our View to the root ViewGroup*/
+        /*When inflating and returning a Fragment’s View in onCreateView(),
+         be sure to pass in false for attachToRoot.
+         If you pass in true, you will get an IllegalStateException
+         because the specified child already has a parent. */
+        return view
+    }
+}
+
+
+
+
+
+</xmp></h1>
+</body>
+</html>

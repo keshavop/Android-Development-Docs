@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.fragmentexample1
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+
+ class Fragment2 : Fragment(){
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        //!! means that an expression is non-null.
+        return inflater!!.inflate(R.layout.fragment_fragment2, container, false)
+    }
+}
+
+
+
+
+
+</xmp></h1>
+</body>
+</html>

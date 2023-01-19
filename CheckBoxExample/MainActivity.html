@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+package com.example.checkboxexample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        var pizza = findViewById<CheckBox>(R.id.checkBox)
+        var coffee = findViewById<CheckBox>(R.id.checkBox2)
+        var burger = findViewById<CheckBox>(R.id.checkBox3)
+        var btn = findViewById<Button>(R.id.button)
+        btn.setOnClickListener(
+            View.OnClickListener {
+                var totalAmount: Int = 0
+                val result = StringBuilder()
+                result.append("Selected Items")
+                if (pizza.isChecked) {
+                    result.append("\nPizza 100Rs")
+                    totalAmount += 100
+                }
+                if (coffee.isChecked) {
+                    result.append("\nCoffee 50Rs")
+                    totalAmount += 50
+                }
+                if (burger.isChecked) {
+                    result.append("\nBurger 120Rs")
+                    totalAmount += 120
+                }
+                result.append("\nTotal: " + totalAmount + "Rs")
+
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+        )
+
+    }
+}
+</xmp></h1>
+</body>
+</html>

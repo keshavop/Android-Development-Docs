@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+/*In android, Menu is an important part of the UI component which is used to provide some common functionality around the application.
+With the help of the menu, users can experience smooth and consistent
+ experiences throughout the application. In android, we have three types of
+  Menus available to define a set of options and actions in our android
+  applications. The Menus in android applications are the following:
+
+Android Options Menu: Android Options Menu is a primary collection of menu items
+ in an android application and useful for actions that have a global impact
+ on the searching application.
+Android Context Menu: Android Context Menu is a floating menu that only appears
+ when the user clicks for a long time on an element and useful for elements that
+  affect the selected content or context frame.
+Android Popup Menu: Android Popup Menu displays a list of items in a vertical
+ list which presents to the view that invoked the menu and useful to provide an
+ overflow of actions that related to specific content.
+ In android, the Popup Menu provides an overflow of actions that are related
+ to specific content and the actions in the popup menu won’t affect the
+ corresponding content.
+ The popup menu won’t support any item shortcuts and item icons.
+
+
+
+In android, the Popup menu is available with API level 11 (Android 3.0) and
+
+higher versions. If you are using Android 3.0 +, the Popup Menu won’t
+support any item shortcuts and item icons in the menu.
+ */
+
+
+
+package com.example.popupmenuexample
+
+import android.os.Bundle
+import android.view.View
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        // Referencing and Initializing the button
+      var button = findViewById<View>(R.id.clickBtn)
+        button.setOnClickListener(){
+            val popupMenu = PopupMenu(this@MainActivity,button)
+            popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { menuItem -> // Toast message on menu item clicked
+                Toast.makeText(
+                    this@MainActivity,
+                    "You Clicked " + menuItem.title,
+                    Toast.LENGTH_SHORT
+                ).show()
+                true
+            }
+            // Showing the popup menu
+
+            popupMenu.show()
+        }
+
+    }
+}
+
+
+
+
+
+
+</xmp></h1>
+</body>
+</html>

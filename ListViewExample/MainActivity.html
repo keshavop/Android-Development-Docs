@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1><xmp>
+
+package com.example.listviewexample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.*
+import android.widget.SeekBar
+
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val users = arrayOf(
+            "Virat Kohli", "Rohit Sharma", "Steve Smith",
+            "Kane Williamson", "Ross Taylor")
+        var mListView = findViewById<ListView>(R.id.userlist) as ListView
+        /*
+        we create a new ArrayAdapterproviding three arguments:
+        this, which represents the current context,
+        android.R.layout.simple_list_item_1, which is a layout built into Android
+        that provides standard appearance for text in a list, and an ArrayList called users
+        */
+        val arrayAdapter: ArrayAdapter<*> = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, users)
+        mListView.adapter = arrayAdapter
+        var textview = findViewById<TextView>(R.id.textView) as TextView
+        /*method required four arguments that are parent, view, position, and id.
+         The parent is the adapter view.
+         The view is the item view and position is the position of the view in the adapter.
+         The id is the row id of the item that was clicked.
+*/
+        mListView.onItemClickListener=AdapterView.OnItemClickListener{
+                parent, view, position, id ->
+            val selectedItemText = parent.getItemAtPosition(position)
+            textview.text = "Selected : $selectedItemText"}
+
+        val seekBar = findViewById<SeekBar>(R.id.seekBar) as SeekBar
+        var s: Float = 0.5f
+        seekBar.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener {
+
+                override fun onProgressChanged(
+                    seekBar: SeekBar, i: Int, b: Boolean
+                ) {
+
+                    s=i.toFloat()
+
+                    textview.setTextSize(s)
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) {
+
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+                }
+            })
+
+        }
+}
+
+</xmp></h1>
+</body>
+</html>
